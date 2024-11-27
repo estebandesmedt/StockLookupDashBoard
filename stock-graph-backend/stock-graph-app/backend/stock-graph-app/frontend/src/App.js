@@ -1,4 +1,3 @@
-// frontend/src/App.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Line } from 'react-chartjs-2';
@@ -12,9 +11,8 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import './App.css'; // Import the CSS file for styling
+import './App.css'; 
 
-// Register necessary chart.js components
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -39,8 +37,10 @@ const App = () => {
       const response = await axios.get(`http://localhost:5000/api/stock/${symbol}`);
       const data = response.data;
 
-      const labels = data.map((item) => item.date);
-      const closePrices = data.map((item) => item.close);
+      const reversedData = data.reverse();
+
+      const labels = reversedData.map((item) => item.date);
+      const closePrices = reversedData.map((item) => item.close);
 
       setChartData({
         labels,
