@@ -4,8 +4,7 @@ const axios = require('axios');
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Your API key for Alpha Vantage (replace with your actual key)
-const API_KEY = 'P5P5E9YD6D8DVIOB';  // Get it from https://www.alphavantage.co/support/#api-key
+const API_KEY = 'P5P5E9YD6D8DVIOB';  
 
 // Endpoint to fetch stock data
 app.get('/api/stock/:symbol', async (req, res) => {
@@ -14,7 +13,7 @@ app.get('/api/stock/:symbol', async (req, res) => {
   const lastMonth = new Date();
   lastMonth.setMonth(today.getMonth() - 1);
 
-  const fromDate = lastMonth.toISOString().split('T')[0]; // Format YYYY-MM-DD
+  const fromDate = lastMonth.toISOString().split('T')[0]; 
 
   try {
     const response = await axios.get('https://www.alphavantage.co/query', {

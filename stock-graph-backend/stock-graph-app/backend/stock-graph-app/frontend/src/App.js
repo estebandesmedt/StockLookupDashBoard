@@ -12,6 +12,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import './App.css'; // Import the CSS file for styling
 
 // Register necessary chart.js components
 ChartJS.register(
@@ -71,21 +72,23 @@ const App = () => {
       />
       <button onClick={fetchStockData}>Fetch Data</button>
 
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p>{error}</p>}
 
       {chartData ? (
-        <Line
-          data={chartData}
-          options={{
-            responsive: true,
-            plugins: {
-              title: {
-                display: true,
-                text: `Stock Price for ${symbol.toUpperCase()}`,
+        <div className="LineChart">
+          <Line
+            data={chartData}
+            options={{
+              responsive: true,
+              plugins: {
+                title: {
+                  display: true,
+                  text: `Stock Price for ${symbol.toUpperCase()}`,
+                },
               },
-            },
-          }}
-        />
+            }}
+          />
+        </div>
       ) : (
         <p>No data to display</p>
       )}
